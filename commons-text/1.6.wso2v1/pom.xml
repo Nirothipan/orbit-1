@@ -1,5 +1,5 @@
 <!--
- ~ Copyright (c) 2018, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ ~ Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  ~
  ~ WSO2 Inc. licenses this file to you under the Apache License,
  ~ Version 2.0 (the "License"); you may not use this file except
@@ -21,29 +21,27 @@
 
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.wso2.orbit.commons-text</groupId>
-    <artifactId>commons-text</artifactId>
+    <groupId>org.wso2.orbit.hierynomus</groupId>
+    <artifactId>smbj</artifactId>
     <packaging>bundle</packaging>
-    <name>commons.text.wso2</name>
-    <version>1.6.wso2v1</version>
+    <name>smbj.wso2</name>
+    <version>0.9.1.wso2v1</version>
     <description>
-        This bundle will export packages from commons-text.jar
+        This bundle will export packages from smbj.jar
     </description>
-    <url>https://commons.apache.org/proper/commons-text/</url>
+    <url>https://github.com/hierynomus/smbj</url>
 
     <dependencies>
         <dependency>
-            <groupId>org.wso2.orbit.org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons.lang.version}</version>
-            <optional>true</optional>
+            <groupId>com.hierynomus</groupId>
+            <artifactId>smbj</artifactId>
+            <version>0.9.1</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-text</artifactId>
-            <version>${commons.text.version}</version>
-            <optional>true</optional>
-        </dependency>
+        <!--<dependency>
+            <groupId>com.hierynomus</groupId>
+            <artifactId>asn-one</artifactId>
+            <version>0.4.0</version>
+        </dependency>-->
     </dependencies>
 
     <build>
@@ -51,21 +49,26 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                <version>1.4.0</version>
+                <version>4.1.0</version>
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
                         <Bundle-Vendor>WSO2 Inc</Bundle-Vendor>
-                        <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
-                        <Bundle-Name>${pom.artifactId}</Bundle-Name>
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Name>${project.artifactId}</Bundle-Name>
                         <Export-Package>
-                            org.apache.commons.text.*; version="${commons.text.version}",
+                            com.hierynomus.*; version="${com.hierynomus.smbj.version}",
                         </Export-Package>
                         <Import-Package>
-                            javax.script,
-                            javax.xml.xpath,
-                            org.xml.sax,
-                            org.apache.commons.lang3.*; version="${commons.lang.version}",
+                            javax.crypto.*,
+                            javax.net,
+                            javax.security.auth,
+                            org.bouncycastle.*,
+                            org.slf4j,
+                            net.engio.*;
+<!--                            com.hierynomus.*,-->
+<!--                            com.sun.security.jgss,-->
+                            org.ietf.jgss;
                         </Import-Package>
                     </instructions>
                 </configuration>
@@ -100,7 +103,6 @@
     </repositories>
 
     <properties>
-        <commons.lang.version>3.4.0.wso2v1</commons.lang.version>
-        <commons.text.version>1.6</commons.text.version>
+        <com.hierynomus.smbj.version>0.9.1</com.hierynomus.smbj.version>
     </properties>
 </project>
